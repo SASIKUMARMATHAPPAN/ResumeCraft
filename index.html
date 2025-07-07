@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeCraft - Build Professional Resumes in Minutes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" ></script>
+</head>
+<body>
+    
+    <!-- Loading Overlay -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-file-alt"></i> ResumeCraft
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#builder">Builder</a></li>
+                <li><a href="#templates">Templates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Craft Your Perfect Resume in Minutes</h1>
+            <p>Create professional, ATS-friendly resumes with our modern templates and intuitive builder. Stand out from the crowd and land your dream job.</p>
+            <a href="#builder" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Start Building Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Why Choose ResumeCraft?</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Everything you need to create a standout resume that gets you hired
+            </p>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Easy to Use</h3>
+                    <p>Intuitive drag-and-drop interface with real-time preview. No design skills required - just fill in your information and watch your resume come to life.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Instant PDF Download</h3>
+                    <p>Download your resume as a high-quality PDF with one click. Perfect formatting guaranteed, ready to send to employers immediately.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Modern Templates</h3>
+                    <p>Choose from professionally designed templates that are ATS-friendly and tailored for different industries and career levels.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Responsive</h3>
+                    <p>Build and edit your resume on any device. Our responsive design ensures a seamless experience on desktop, tablet, and mobile.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Privacy Focused</h3>
+                    <p>Your data stays private and secure. We don't store your personal information on our servers - everything is processed locally.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Save Time</h3>
+                    <p>Create a professional resume in under 10 minutes. Pre-written content suggestions and smart formatting save you hours of work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Builder Section -->
+    <section class="resume-builder" id="builder">
+        <div class="builder-container">
+            <h2 class="section-title" data-aos="fade-up">Build Your Resume</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Fill in your information and watch your resume come to life
+            </p>
+            
+            <!-- Template Selector -->
+            <div class="template-selector" data-aos="fade-up" data-aos-delay="200">
+                <button class="template-btn active" data-template="modern">Modern</button>
+                <button class="template-btn" data-template="creative">Creative</button>
+                <button class="template-btn" data-template="minimalist">Minimalist</button>
+            </div>
+
+            <div class="builder-layout">
+                <!-- Form Section -->
+                <div class="form-section" data-aos="fade-right">
+                    <form id="resumeForm">
+                        <!-- Personal Information -->
+                        <h3>Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                                <div class="error-message">First name is required</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                                <div class="error-message">Last name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title *</label>
+                            <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g., Software Engineer, Marketing Manager" required>
+                            <div class="error-message">Job title is required</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                                <div class="error-message">Valid email is required</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" placeholder="City, State">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn</label>
+                            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                        </div>
+
+                        <!-- Professional Summary -->
+                        <h3>Professional Summary</h3>
+                        <div class="form-group">
+                            <label for="summary">Summary</label>
+                            <textarea id="summary" name="summary" placeholder="Write a brief summary of your professional background and key achievements..."></textarea>
+                        </div>
+
+                        <!-- Experience -->
+                        <h3>Work Experience</h3>
+                        <div id="experienceContainer">
+                            <div class="experience-entry">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Job Title</label>
+                                        <input type="text" name="expTitle" placeholder="e.g., Senior Developer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Company</label>
+                                        <input type="text" name="expCompany" placeholder="e.g., Tech Corp">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Start Date</label>
+                                        <input type="text" name="expStartDate" placeholder="e.g., Jan 2020">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Date</label>
+                                        <input type="text" name="expEndDate" placeholder="e.g., Present">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea name="expDescription" placeholder="Describe your key responsibilities and achievements..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" id="addExperience">
+                            <i class="fas fa-plus"></i> Add Experience
+                        </button>
+
+                        <!-- Education -->
+                        <h3>Education</h3>
+                        <div id="educationContainer">
+                            <div class="education-entry">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Degree</label>
+                                        <input type="text" name="eduDegree" placeholder="e.g., Bachelor of Science">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Field of Study</label>
+                                        <input type="text" name="eduField" placeholder="e.g., Computer Science">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>School</label>
+                                        <input type="text" name="eduSchool" placeholder="e.g., University of Technology">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Graduation Year</label>
+                                        <input type="text" name="eduYear" placeholder="e.g., 2018">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" id="addEducation">
+                            <i class="fas fa-plus"></i> Add Education
+                        </button>
+
+                        <!-- Skills -->
+                        <h3>Skills</h3>
+                        <div class="form-group">
+                            <label for="skills">Skills (comma-separated)</label>
+                            <textarea id="skills" name="skills" placeholder="e.g., JavaScript, React, Node.js, Python, Project Management"></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="preview-section" data-aos="fade-left">
+                    <div class="resume-preview" id="resumePreview">
+                        <!-- Modern Template (Default) -->
+                        <div class="resume-template template-modern" id="template-modern">
+                            <div class="resume-header">
+                                <div class="resume-name" id="preview-name">John Doe</div>
+                                <div class="resume-title" id="preview-title">Professional Title</div>
+                                <div class="resume-contact">
+                                    <div class="contact-item" id="preview-email-contact">
+                                        <i class="fas fa-envelope"></i>
+                                        <span id="preview-email">john.doe@example.com</span>
+                                    </div>
+                                    <div class="contact-item" id="preview-phone-contact">
+                                        <i class="fas fa-phone"></i>
+                                        <span id="preview-phone">(555) 123-4567</span>
+                                    </div>
+                                    <div class="contact-item" id="preview-location-contact">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span id="preview-location">City, State</span>
+                                    </div>
+                                    <div class="contact-item" id="preview-linkedin-contact">
+                                        <i class="fab fa-linkedin"></i>
+                                        <span id="preview-linkedin">LinkedIn Profile</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="resume-section" id="summary-section">
+                                <div class="section-header">Professional Summary</div>
+                                <div id="preview-summary">
+                                    Experienced professional with a strong background in delivering high-quality results and driving organizational success.
+                                </div>
+                            </div>
+
+                            <div class="resume-section" id="experience-section">
+                                <div class="section-header">Work Experience</div>
+                                <div id="preview-experience">
+                                    <div class="experience-item">
+                                        <div class="item-header">
+                                            <div>
+                                                <div class="item-title">Job Title</div>
+                                                <div class="item-company">Company Name</div>
+                                            </div>
+                                            <div class="item-date">Date Range</div>
+                                        </div>
+                                        <div class="item-description">
+                                            Job description and key achievements will appear here.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="resume-section" id="education-section">
+                                <div class="section-header">Education</div>
+                                <div id="preview-education">
+                                    <div class="education-item">
+                                        <div class="item-header">
+                                            <div>
+                                                <div class="item-title">Degree in Field</div>
+                                                <div class="item-company">School Name</div>
+                                            </div>
+                                            <div class="item-date">Year</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="resume-section" id="skills-section">
+                                <div class="section-header">Skills</div>
+                                <div class="skills-list" id="preview-skills">
+                                    <span class="skill-tag">Skill 1</span>
+                                    <span class="skill-tag">Skill 2</span>
+                                    <span class="skill-tag">Skill 3</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Creative Template -->
+                        <div class="resume-template template-creative" id="template-creative" style="display: none;">
+                            <div class="resume-header">
+                                <div class="resume-name" id="creative-name">John Doe</div>
+                                <div class="resume-title" id="creative-title">Professional Title</div>
+                                <div class="resume-contact">
+                                    <div class="contact-item" id="creative-email-contact">
+                                        <i class="fas fa-envelope"></i>
+                                        <span id="creative-email">john.doe@example.com</span>
+                                    </div>
+                                    <div class="contact-item" id="creative-phone-contact">
+                                        <i class="fas fa-phone"></i>
+                                        <span id="creative-phone">(555) 123-4567</span>
+                                    </div>
+                                    <div class="contact-item" id="creative-location-contact">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span id="creative-location">City, State</span>
+                                    </div>
+                                    <div class="contact-item" id="creative-linkedin-contact">
+                                        <i class="fab fa-linkedin"></i>
+                                        <span id="creative-linkedin">LinkedIn Profile</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="resume-section">
+                                <div class="section-header">Professional Summary</div>
+                                <div id="creative-summary">
+                                    Experienced professional with a strong background in delivering high-quality results and driving organizational success.
+                                </div>
+                            </div>
+
+                            <div class="resume-section">
+                                <div class="section-header">Work Experience</div>
+                                <div id="creative-experience">
+                                    <div class="experience-item">
+                                        <div class="item-header">
+                                            <div>
+                                                <div class="item-title">Job Title</div>
+                                                <div class="item-company">Company Name</div>
+                                            </div>
+                                            <div class="item-date">Date Range</div>
+                                        </div>
+                                        <div class="item-description">
+                                            Job description and key achievements will appear here.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="resume-section">
+                                <div class="section-header">Education</div>
+                                <div id="creative-education">
+                                    <div class="education-item">
+                                        <div class="item-header">
+                                            <div>
+                                                <div class="item-title">Degree in Field</div>
+                                                <div class="item-company">School Name</div>
+                                            </div>
+                                            <div class="item-date">Year</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="resume-section">
+                                <div class="section-header">Skills</div>
+                                <div class="skills-list" id="creative-skills">
+                                    <span class="skill-tag">Skill 1</span>
+                                    <span class="skill-tag">Skill 2</span>
+                                    <span class="skill-tag">Skill 3</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Minimalist Template -->
+                        <div class="resume-template template-minimalist" id="template-minimalist" style="display: none;">
+                            <div class="resume-header">
+                                <div class="resume-name" id="minimalist-name">John Doe</div>
+                                <div class="resume-title" id="minimalist-title">Professional Title</div>
+                                <div class="resume-contact">
+                                    <div class="contact-item" id="minimalist-email-contact">
+                                        <i class="fas fa-envelope"></i>
+                                        <span id="minimalist-email">john.doe@example.com</span>
+                                    </div>
+                                    <div class="contact-item" id="minimalist-phone-contact">
+                                        <i class="fas fa-phone"></i>
+                                        <span id="minimalist-phone">(555) 123-4567</span>
+                                    </div>
+                                    <div class="contact-item" id="minimalist-location-contact">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span id="minimalist-location">City, State</span>
+                                    </div>
+                                    <div class="contact-item" id="minimalist-linkedin-contact">
+                                        <i class="fab fa-linkedin"></i>
+                                        <span id="minimalist-linkedin">LinkedIn Profile</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="resume-section">
+                                <div class="section-header">Professional Summary</div>
+                                <div id="minimalist-summary">
+                                    Experienced professional with a strong background in delivering high-quality results and driving organizational success.
+                                </div>
+                            </div>
+
+                            <div class="resume-section">
+                                <div class="section-header">Work Experience</div>
+                                <div id="minimalist-experience">
+                                    <div class="experience-item">
+                                        <div class="item-header">
+                                            <div>
+                                                <div class="item-title">Job Title</div>
+                                                <div class="item-company">Company Name</div>
+                                            </div>
+                                            <div class="item-date">Date Range</div>
+                                        </div>
+                                        <div class="item-description">
+                                            Job description and key achievements will appear here.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="resume-section">
+                                <div class="section-header">Education</div>
+                                <div id="minimalist-education">
+                                    <div class="education-item">
+                                        <div class="item-header">
+                                            <div>
+                                                <div class="item-title">Degree in Field</div>
+                                                <div class="item-company">School Name</div>
+                                            </div>
+                                            <div class="item-date">Year</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="resume-section">
+                                <div class="section-header">Skills</div>
+                                <div class="skills-list" id="minimalist-skills">
+                                    <span class="skill-tag">Skill 1</span>
+                                    <span class="skill-tag">Skill 2</span>
+                                    <span class="skill-tag">Skill 3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="download-btn" id="downloadPDF">
+                        <i class="fas fa-download"></i>
+                        Download PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">ResumeCraft</div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#builder">Builder</a>
+                <a href="#templates">Templates</a>
+                <a href="mailto:contact@resumecraft.com">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ResumeCraft. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
